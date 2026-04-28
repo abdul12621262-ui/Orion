@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orion — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #08090f;
+      --surface-0:  rgba(255,255,255,0.028);
+      --surface-1:  rgba(255,255,255,0.052);
+      --surface-2:  rgba(255,255,255,0.08);
+      --border-0:   rgba(255,255,255,0.055);
+      --border-1:   rgba(255,255,255,0.10);
+      --text:       #eef0f8;
+      --text-2:     #8b93b5;
+      --text-3:     #555e80;
+      --accent-1:   #5b6fff;
+      --accent-2:   #3ac6ff;
+      --r-md:       10px;
+      --r-lg:       14px;
+      --r-xl:       18px;
+      --r-2xl:      24px;
+      --r-full:     9999px;
+      --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      font-family: 'Geist', -apple-system, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background:
+        radial-gradient(ellipse 90% 55% at 15% -5%, rgba(91,111,255,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 40% at 85% 105%, rgba(58,198,255,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 30% at 50% 50%, rgba(91,111,255,0.03) 0%, transparent 70%),
+        var(--bg);
+      padding: 0;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 100vh;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .page-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px 60px;
+      gap: 52px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: fadeUp 0.6s var(--ease-out) both;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 5px 12px;
+      border: 1px solid var(--border-0);
+      border-radius: var(--r-full);
+      background: var(--surface-0);
+    }
+
+    .hero-eyebrow .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-time {
+      font-size: 64px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: linear-gradient(135deg, #eef0f8 30%, #8b93b5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-date {
+      font-size: 14px;
+      color: var(--text-2);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── SEARCH ── */
+    .search-section {
+      width: 100%;
+      max-width: 640px;
+      animation: fadeUp 0.6s 0.08s var(--ease-out) both;
+    }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      height: 50px;
+      padding: 0 8px 0 20px;
+      border-radius: var(--r-full);
+      border: 1px solid var(--border-1);
+      background: var(--surface-1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow:
+        0 4px 24px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      transition:
+        border-color 200ms var(--ease-out),
+        box-shadow 200ms var(--ease-out),
+        transform 200ms var(--ease-spring);
+    }
+
+    .search-wrap:focus-within {
+      border-color: rgba(91,111,255,0.55);
+      box-shadow:
+        0 0 0 2.5px rgba(91,111,255,0.22),
+        0 8px 32px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+      transform: translateY(-1px);
+    }
+
+    .search-icon {
+      color: var(--text-3);
+      flex-shrink: 0;
+      display: flex;
+    }
+
+    .search-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 15px;
+      font-family: 'Geist', sans-serif;
+      font-weight: 400;
+      outline: none;
+    }
+
+    .search-input::placeholder { color: var(--text-3); }
+
+    .search-btn {
+      height: 36px;
+      padding: 0 18px;
+      border-radius: var(--r-full);
+      border: none;
+      background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+      color: #fff;
+      font-size: 13px;
+      font-family: 'Geist', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(91,111,255,0.35);
+      transition:
+        transform 150ms var(--ease-spring),
+        box-shadow 150ms var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .search-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(91,111,255,0.48);
+    }
+    .search-btn:active { transform: scale(0.95); }
+
+    /* ── SPEED DIAL ── */
+    .dial-section {
+      width: 100%;
+      max-width: 780px;
+      animation: fadeUp 0.6s 0.15s var(--ease-out) both;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 14px;
+      padding-left: 2px;
+    }
+
+    .dial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .dial {
+      position: relative;
+      border: 1px solid var(--border-0);
+      border-radius: var(--r-xl);
+      background: var(--surface-0);
+      color: var(--text);
+      text-decoration: none;
+      min-height: 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      padding: 14px 16px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      overflow: hidden;
+      transition:
+        border-color 160ms var(--ease-out),
+        background 160ms var(--ease-out),
+        transform 200ms var(--ease-spring),
+        box-shadow 200ms var(--ease-out);
+    }
+
+    /* Accent glow on hover */
+    .dial::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(91,111,255,0.07) 0%, rgba(58,198,255,0.03) 100%);
+      opacity: 0;
+      transition: opacity 200ms var(--ease-out);
+    }
+
+    .dial:hover {
+      border-color: var(--border-1);
+      background: var(--surface-1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.32), 0 2px 6px rgba(0,0,0,0.20);
+    }
+
+    .dial:hover::before { opacity: 1; }
+    .dial:active { transform: scale(0.97); }
+
+    .dial-favicon {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+
+    .dial-favicon img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+
+    .dial strong {
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dial span {
+      font-size: 11px;
+      color: var(--text-3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Geist Mono', monospace;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      position: relative;
+      z-index: 1;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid var(--border-0);
+      animation: fadeUp 0.6s 0.22s var(--ease-out) both;
+    }
+
+    .footer-hint {
+      font-size: 11.5px;
+      color: var(--text-3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 18px;
+      min-width: 18px;
+      padding: 0 5px;
+      border-radius: 4px;
+      border: 1px solid var(--border-1);
+      background: var(--surface-1);
+      font-size: 10px;
+      font-family: 'Geist Mono', monospace;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.85); }
+      50%       { opacity: 1;   transform: scale(1.1); }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: var(--border-1); border-radius: 999px; }
+  </style>
+</head>
+<body>
+
+  <div class="page-content">
+
+    <!-- Hero: clock + greeting -->
+    <header class="hero">
+      <div class="hero-eyebrow">
+        <div class="dot"></div>
+        <span id="greeting-text">Good morning</span>
+      </div>
+      <div class="hero-time" id="clock">—</div>
+      <div class="hero-date" id="date-display">—</div>
+    </header>
+
+    <!-- Search -->
+    <section class="search-section">
+      <form class="search-wrap" id="search-form" autocomplete="off">
+        <span class="search-icon">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <circle cx="6.5" cy="6.5" r="5" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10.5 10.5l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <input
+          id="search-input"
+          class="search-input"
+          type="text"
+          placeholder="Search the web or enter an address…"
+          autocomplete="off"
+          autofocus
+        />
+        <button class="search-btn" type="submit">Search</button>
+      </form>
+    </section>
+
+    <!-- Speed Dial -->
+    <section class="dial-section">
+      <div class="section-label">Quick access</div>
+      <div class="dial-grid" id="dial-grid">
+
+        <a class="dial" href="https://youtube.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=youtube.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>YouTube</strong>
+          <span>youtube.com</span>
+        </a>
+
+        <a class="dial" href="https://github.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=github.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>GitHub</strong>
+          <span>github.com</span>
+        </a>
+
+        <a class="dial" href="https://search.brave.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=search.brave.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>Brave Search</strong>
+          <span>search.brave.com</span>
+        </a>
+
+        <a class="dial" href="https://mail.google.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=mail.google.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>Gmail</strong>
+          <span>mail.google.com</span>
+        </a>
+
+        <a class="dial" href="https://x.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=x.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>X</strong>
+          <span>x.com</span>
+        </a>
+
+        <a class="dial" href="https://reddit.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=reddit.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>Reddit</strong>
+          <span>reddit.com</span>
+        </a>
+
+        <a class="dial" href="https://stackoverflow.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>Stack Overflow</strong>
+          <span>stackoverflow.com</span>
+        </a>
+
+        <a class="dial" href="https://news.ycombinator.com">
+          <div class="dial-favicon">
+            <img src="https://www.google.com/s2/favicons?domain=news.ycombinator.com&sz=32" alt="" loading="lazy" />
+          </div>
+          <strong>Hacker News</strong>
+          <span>news.ycombinator.com</span>
+        </a>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="footer-hint">
+      Type <kbd class="kbd">home</kbd> in the address bar to return here · <kbd class="kbd">⌘K</kbd> for commands
+    </div>
+  </footer>
+
+  <script>
+    // ── CLOCK ──────────────────────────────────────────────
+    const clockEl = document.getElementById('clock');
+    const dateEl  = document.getElementById('date-display');
+    const greetEl = document.getElementById('greeting-text');
+
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours();
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const hr = h % 12 || 12;
+      const ampm = h < 12 ? 'AM' : 'PM';
+      clockEl.textContent = `${hr}:${m} ${ampm}`;
+
+      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      dateEl.textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+
+      if (h < 5)       greetEl.textContent = 'Good night';
+      else if (h < 12) greetEl.textContent = 'Good morning';
+      else if (h < 17) greetEl.textContent = 'Good afternoon';
+      else if (h < 21) greetEl.textContent = 'Good evening';
+      else             greetEl.textContent = 'Good night';
+    }
+
+    updateClock();
+    setInterval(updateClock, 5000);
+
+    // ── SEARCH ─────────────────────────────────────────────
+    const form  = document.getElementById('search-form');
+    const input = document.getElementById('search-input');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const raw = input.value.trim();
+      if (!raw) return;
+      const hasProtocol = /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(raw);
+      const isDomainLike = /^[^\s]+\.[^\s]{2,}$/.test(raw) && !raw.includes(' ');
+      const target = hasProtocol
+        ? raw
+        : isDomainLike
+          ? `https://${raw}`
+          : `https://search.brave.com/search?q=${encodeURIComponent(raw)}`;
+      window.location.assign(target);
+    });
+
+    // Favicon error fallback
+    document.querySelectorAll('.dial-favicon img').forEach(img => {
+      img.onerror = () => {
+        img.style.display = 'none';
+        img.parentElement.textContent = img.closest('.dial').querySelector('strong').textContent[0];
+      };
+    });
+  </script>
+</body>
+</html>

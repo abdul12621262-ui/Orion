@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;" />
+  <title>Orion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══ LEFT RAIL ══════════════════════════════════════════ -->
+  <aside id="left-rail" data-collapsed="false">
+    <div id="rail-top">
+
+      <!-- Logo + collapse -->
+      <div id="logo">
+        <button id="btn-collapse-rail" class="icon-btn rail-collapse-btn" title="Toggle sidebar" aria-label="Toggle sidebar">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M2.5 4.5h10M2.5 7.5h10M2.5 10.5h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div id="logo-mark">
+          <!-- Orion constellation wordmark -->
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="10" stroke="url(#lg-ring)" stroke-width="1.2" stroke-dasharray="2.5 1.5"/>
+            <circle cx="11" cy="11" r="4.5" fill="url(#lg-core)" opacity="0.9"/>
+            <circle cx="11" cy="5"  r="1.2" fill="url(#lg-star)"/>
+            <circle cx="17" cy="9"  r="0.9" fill="url(#lg-star)" opacity="0.7"/>
+            <circle cx="5"  cy="9"  r="0.9" fill="url(#lg-star)" opacity="0.7"/>
+            <defs>
+              <linearGradient id="lg-ring" x1="0" y1="0" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#5b6fff"/>
+                <stop offset="1" stop-color="#3ac6ff"/>
+              </linearGradient>
+              <linearGradient id="lg-core" x1="0" y1="0" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#5b6fff"/>
+                <stop offset="1" stop-color="#3ac6ff"/>
+              </linearGradient>
+              <linearGradient id="lg-star" x1="0" y1="0" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#a5b4fc"/>
+                <stop offset="1" stop-color="#7dd3fc"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span id="logo-text">Orion</span>
+      </div>
+
+      <!-- Tab list -->
+      <div id="tab-list"></div>
+
+      <!-- New tab -->
+      <button id="btn-new-tab">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+          <path d="M5.5 1v9M1 5.5h9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span>New tab</span>
+      </button>
+    </div>
+
+    <!-- Bottom actions -->
+    <div id="rail-bottom">
+      <button class="rail-btn" id="btn-toggle-ai" title="AI Assistant">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M4.5 6h7M4.5 9.5h4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="12.5" cy="3.5" r="2" fill="url(#ai-dot)"/>
+          <defs>
+            <linearGradient id="ai-dot" x1="10.5" y1="1.5" x2="14.5" y2="5.5" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#818cf8"/>
+              <stop offset="1" stop-color="#38bdf8"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>AI</span>
+      </button>
+      <button class="rail-btn" id="btn-open-settings" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M8 1.5v1.8M8 12.7v1.8M1.5 8h1.8M12.7 8h1.8M3.4 3.4l1.27 1.27M11.33 11.33l1.27 1.27M3.4 12.6l1.27-1.27M11.33 4.67l1.27-1.27" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span>Settings</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ══ CENTER COLUMN ═══════════════════════════════════════ -->
+  <div id="center-col">
+
+    <!-- Chrome bar -->
+    <div id="chromebar">
+      <div id="drag-zone"></div>
+
+      <!-- Nav buttons -->
+      <div id="nav-btns">
+        <button class="nav-btn" id="btn-back" title="Go back" aria-label="Back">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M8.5 2L4 6.5 8.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn" id="btn-forward" title="Go forward" aria-label="Forward">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M4.5 2L9 6.5 4.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <button class="nav-btn" id="btn-reload" title="Reload" aria-label="Reload">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M10.8 6.5a4.3 4.3 0 1 1-1.06-2.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M9.74 2l.5 2.2-2.2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Omnibar / command center -->
+      <div id="omnibar-outer">
+        <div id="omnibar">
+          <span id="shield" title="Connection secure">
+            <svg width="11" height="13" viewBox="0 0 11 13" fill="none">
+              <path d="M5.5 1L1 3.2v3.4C1 9.4 3 11.8 5.5 12.6 8 11.8 10 9.4 10 6.6V3.2L5.5 1z" fill="url(#sh-g)"/>
+              <defs>
+                <linearGradient id="sh-g" x1="1" y1="1" x2="10" y2="12.6" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#34d39b"/>
+                  <stop offset="1" stop-color="#22d3ee"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <input
+            id="address-bar"
+            type="text"
+            placeholder="Search or enter address — ⌘K for commands"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Address bar"
+          />
+          <span id="spinner" class="hidden" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 13 13" class="spin-svg">
+              <circle cx="6.5" cy="6.5" r="5" stroke="url(#sp-g)" stroke-width="1.5" fill="none" stroke-dasharray="20" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="sp-g">
+                  <stop stop-color="#5b6fff"/>
+                  <stop offset="1" stop-color="#3ac6ff" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+        </div>
+        <div id="address-suggestions" class="hidden" role="listbox"></div>
+      </div>
+
+      <!-- Window controls -->
+      <div id="win-controls">
+        <button id="btn-min" title="Minimize" aria-label="Minimize">
+          <svg width="9" height="9" viewBox="0 0 9 2"><rect width="9" height="1.5" rx="0.75" fill="currentColor"/></svg>
+        </button>
+        <button id="btn-max" title="Maximize" aria-label="Maximize">
+          <svg width="9" height="9" viewBox="0 0 9 9"><rect x="0.75" y="0.75" width="7.5" height="7.5" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        </button>
+        <button id="btn-close" title="Close" aria-label="Close">
+          <svg width="9" height="9" viewBox="0 0 9 9"><path d="M1 1l7 7M8 1L1 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Status strip -->
+    <div id="status-strip">
+      <div id="tracker-pill">
+        <svg width="8" height="9" viewBox="0 0 8 10" fill="none">
+          <path d="M4 0.5L0.5 2.3v2.8C.5 7.7 2 9.5 4 10.1 6 9.5 7.5 7.7 7.5 5.1V2.3L4 .5z" fill="#34d39b"/>
+        </svg>
+        <span id="blocked-count">0</span> blocked
+      </div>
+      <div id="page-title"></div>
+    </div>
+  </div>
+
+  <!-- ══ AI PANEL ════════════════════════════════════════════ -->
+  <div id="ai-panel" class="hidden" role="complementary" aria-label="AI Assistant">
+    <div id="ai-header">
+      <div id="ai-title">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="url(#ai-ring)" stroke-width="1"/>
+          <circle cx="8" cy="8" r="3" fill="url(#ai-core)"/>
+          <defs>
+            <linearGradient id="ai-ring" x1="0" y1="0" x2="16" y2="16" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#5b6fff"/><stop offset="1" stop-color="#3ac6ff"/>
+            </linearGradient>
+            <linearGradient id="ai-core" x1="0" y1="0" x2="16" y2="16" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#818cf8"/><stop offset="1" stop-color="#38bdf8"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Orion AI</span>
+        <span id="model-tag">llama-3.3-70b</span>
+      </div>
+      <button id="btn-close-ai" aria-label="Close AI panel">
+        <svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div id="messages" role="log" aria-live="polite"></div>
+
+    <div id="input-area">
+      <div id="input-wrap">
+        <textarea id="chat-input" placeholder="Ask anything about this page…" rows="1" aria-label="Chat input"></textarea>
+        <button id="btn-send" aria-label="Send message">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <path d="M1.5 6.5h10M7.5 2l4.5 4.5-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <p id="powered-by">Groq · Ultra-fast inference</p>
+    </div>
+  </div>
+
+  <!-- ══ SETTINGS PANEL ══════════════════════════════════════ -->
+  <div id="settings-panel" class="hidden" role="dialog" aria-label="Settings" aria-modal="true">
+    <div id="settings-shell">
+
+      <div id="settings-header">
+        <div id="settings-title-wrap">
+          <h2>Settings</h2>
+          <input
+            id="settings-search"
+            type="text"
+            placeholder="Search settings…"
+            aria-label="Search settings"
+            autocomplete="off"
+          />
+        </div>
+        <div id="settings-actions">
+          <button id="btn-reset-all-settings">Reset All</button>
+          <button id="btn-export-settings">Export</button>
+          <button id="btn-import-settings">Import</button>
+        </div>
+        <button id="btn-close-settings" aria-label="Close settings">Close</button>
+      </div>
+
+      <div id="settings-content">
+        <aside id="settings-sidebar" role="navigation" aria-label="Settings categories"></aside>
+        <main id="settings-main">
+          <textarea id="settings-import-export" placeholder="Paste settings JSON here to import…" aria-label="Settings JSON"></textarea>
+          <div id="settings-feature-list" role="list"></div>
+        </main>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="renderer.js"></script>
+</body>
+</html>
