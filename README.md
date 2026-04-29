@@ -1,4 +1,5 @@
 <div align="center">
+
 # Orion Browser
 
 **A premium desktop browser with a built-in AI panel — built from scratch with Electron.**
@@ -8,7 +9,7 @@
 [![Built with Electron](https://img.shields.io/badge/Built%20with-Electron-47848f?style=for-the-badge)](https://www.electronjs.org/)
 [![AI by Groq](https://img.shields.io/badge/AI-Groq%20llama--3.3--70b-orange?style=for-the-badge)](https://groq.com/)
 
-![Orion Home Screenshot](https://claude.ai/api/44029729-de8e-463a-8d5e-b248cbc480c1/files/019dd816-d87f-7548-a0db-68e86a0cf356/preview)
+![Orion Home Screenshot](https://raw.githubusercontent.com/abdul12621262-ui/Orion/main/Screenshot%202026-04-29%20121448.png)
 
 </div>
 
@@ -27,7 +28,8 @@ It's built entirely from scratch using Electron and vanilla JavaScript — no UI
 ### 🤖 Built-in AI Panel (Groq — llama-3.3-70b)
 Ask anything about the page you're on. Summarize articles, find key facts, explain complex content — all without leaving the browser. Powered by Groq's ultra-fast inference.
 
-![AI Panel Screenshot](https://claude.ai/api/44029729-de8e-463a-8d5e-b248cbc480c1/files/019dd816-fd4b-76a0-8a71-3c01567cec58/preview)
+![AI Panel Screenshot](https://raw.githubusercontent.com/abdul12621262-ui/Orion/main/Screenshot%202026-04-29%20121436.png)
+
 ### 🛡️ Ad Blocker + Tracker Blocking
 Built-in ad and tracker blocking with custom blocklist support. Privacy out of the box — no extension needed.
 
@@ -59,7 +61,7 @@ Live clock, date, and a Quick Access speed dial with your most-used sites.
 - Export / Import settings as JSON
 - Reset to defaults
 
-![Settings Screenshot](https://claude.ai/api/44029729-de8e-463a-8d5e-b248cbc480c1/files/019dd817-3176-76e1-b439-25f2ad8211e3/preview)
+![Settings Screenshot](https://raw.githubusercontent.com/abdul12621262-ui/Orion/main/Screenshot%202026-04-29%20121426.png)
 
 ---
 
